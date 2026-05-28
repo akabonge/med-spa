@@ -1,5 +1,13 @@
 # Luminara Med Spa — Luna AI Wellness Consultant
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-railway-8B5CF6?style=for-the-badge&logo=railway&logoColor=white)](https://med-spa-production.up.railway.app)
+[![GitHub](https://img.shields.io/badge/GitHub-akabonge-181717?style=for-the-badge&logo=github)](https://github.com/akabonge/med-spa)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Claude](https://img.shields.io/badge/Claude_API-CC785C?style=for-the-badge&logo=anthropic&logoColor=white)](https://anthropic.com)
+[![ChromaDB](https://img.shields.io/badge/ChromaDB-orange?style=for-the-badge)](https://trychroma.com)
+[![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.ai)
+[![Portfolio](https://img.shields.io/badge/Portfolio-aialo.io-C9A84C?style=for-the-badge&logo=google-chrome&logoColor=white)](https://aialo.io)
+
 **Demo 3 of the AI Alo Portfolio**
 A production-quality AI automation demo targeting med spa and aesthetic clinic owners in the Fredericksburg, VA area.
 
