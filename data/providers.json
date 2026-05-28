@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Dr. Sarah Chen",
+    "title": "Medical Director, MD",
+    "bio": "Board-certified physician with over 12 years of experience in aesthetic medicine. Dr. Chen trained at Johns Hopkins and completed advanced fellowship training in facial aesthetics. She has a special focus on natural-looking full-face rejuvenation and complex cases. She performs all PDO thread lifts and oversees all injectable protocols at Luminara.",
+    "specialties": ["Full-face rejuvenation", "PDO Thread Lifts", "Morpheus8", "Complex injectable cases", "Sculptra"]
+  },
+  {
+    "name": "Jennifer Walsh, RN",
+    "title": "Aesthetic Nurse Injector",
+    "bio": "Jennifer is a registered nurse with 8 years of aesthetic nursing experience. She completed advanced training in facial anatomy and injectable techniques at the American Academy of Facial Esthetics. She is known for her precise, gentle injection technique and her ability to put nervous first-time clients at ease.",
+    "specialties": ["Botox and Dysport", "Dermal Fillers", "Kybella", "Lip enhancement", "Preventative aesthetics"]
+  },
+  {
+    "name": "Michelle Torres",
+    "title": "Licensed Medical Aesthetician",
+    "bio": "Michelle has 10 years of experience in medical aesthetics and is certified in HydraFacial, chemical peels, IPL, and laser hair removal. She is passionate about skin health and developing personalized at-home skincare regimens that extend in-office results.",
+    "specialties": ["HydraFacial", "Chemical Peels", "IPL Photofacial", "Laser Hair Removal", "Skincare consultations"]
+  }
+]

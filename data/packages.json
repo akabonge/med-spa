@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Glow Starter Package",
+    "treatments": ["HydraFacial", "IPL Photofacial"],
+    "description": "Perfect for your first step into medical aesthetics. Combines deep cleansing and hydration with targeted treatment for sun damage, redness, and uneven tone. A great way to see what Luminara is all about.",
+    "price": "$499 (save $51)",
+    "ideal_for": ["First-time clients", "Sun damage", "Dull or uneven skin", "Redness and brown spots"]
+  },
+  {
+    "name": "Youth Revival Package",
+    "treatments": ["Botox (up to 40 units)", "Dermal Filler (1 syringe)"],
+    "description": "Our most popular combination. Botox relaxes expression lines while filler restores volume — together they create a fully refreshed, natural look. Ideal for clients in their 30s-40s noticing both dynamic lines and volume loss.",
+    "price": "$1,050 (save $150+)",
+    "ideal_for": ["Expression lines and volume loss together", "First-time injectable clients", "Natural anti-aging results"]
+  },
+  {
+    "name": "Total Transformation Package",
+    "treatments": ["Morpheus8 (series of 3)", "Botox (up to 40 units)", "Dermal Filler (1 syringe)"],
+    "description": "Our most comprehensive anti-aging package. Morpheus8 tightens and resurfaces from the inside, while Botox and filler address surface expression and volume. This combination delivers surgical-level results without surgery.",
+    "price": "$3,299 (save $650+)",
+    "ideal_for": ["Significant skin laxity", "Clients wanting maximum non-surgical results", "Milestone events or transformations"]
+  },
+  {
+    "name": "Radiance Maintenance Package",
+    "treatments": ["HydraFacial (series of 3)", "Chemical Peel (series of 3)"],
+    "description": "A 3-month skin health program alternating HydraFacials with chemical peels. Designed to restore glow, treat hyperpigmentation, and establish a healthy skin baseline. Ideal as ongoing maintenance or prep for a special event.",
+    "price": "$1,299 (save $201)",
+    "ideal_for": ["Dark spots and hyperpigmentation", "Dull or congested skin", "Pre-event skin prep", "Ongoing skin health"]
+  }
+]

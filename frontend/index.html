@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminara Med Spa — Fredericksburg, VA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark">L</div>
+    <span class="nav-name">Luminara</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#treatments">Treatments</a></li>
+    <li><a href="#team">Our Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" onclick="openChat()" class="nav-cta">Book Consult</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Fredericksburg, Virginia</p>
+    <h1 class="hero-title">
+      You, but<br />
+      <em>remarkably</em><br />
+      refreshed.
+    </h1>
+    <p class="hero-sub sans">
+      Medical-grade aesthetic treatments delivered with clinical precision and an artist's eye.
+      Results that look like the best version of you — never overdone.
+    </p>
+    <div class="hero-actions">
+      <a href="#" onclick="openChat()" class="btn-primary">Chat with Luna</a>
+      <a href="tel:5408994200" class="btn-ghost">(540) 899-4200</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-overlay"></div>
+    <div class="hero-tagline-badge">
+      <p>"Where science meets beauty."</p>
+      <span>Luminara Med Spa</span>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS STRIP -->
+<section class="treatments-strip" id="treatments">
+  <div class="section-header">
+    <p class="section-eyebrow">What We Offer</p>
+    <h2 class="section-title">Our Treatments</h2>
+  </div>
+  <div class="treatments-grid">
+    <div class="treatment-card">
+      <div class="treatment-icon">✦</div>
+      <div class="treatment-name">Botox / Dysport</div>
+      <div class="treatment-range sans">from $300</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">◈</div>
+      <div class="treatment-name">Dermal Fillers</div>
+      <div class="treatment-range sans">from $650 / syringe</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">◉</div>
+      <div class="treatment-name">Morpheus8</div>
+      <div class="treatment-range sans">from $1,200 / session</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">❧</div>
+      <div class="treatment-name">Kybella</div>
+      <div class="treatment-range sans">from $800 / session</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">✿</div>
+      <div class="treatment-name">HydraFacial</div>
+      <div class="treatment-range sans">from $200</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">☼</div>
+      <div class="treatment-name">IPL Photofacial</div>
+      <div class="treatment-range sans">from $350</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">⊹</div>
+      <div class="treatment-name">Chemical Peels</div>
+      <div class="treatment-range sans">from $150</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">⟡</div>
+      <div class="treatment-name">PDO Threads</div>
+      <div class="treatment-range sans">from $1,500</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">◎</div>
+      <div class="treatment-name">Sculptra</div>
+      <div class="treatment-range sans">from $800 / vial</div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-icon">∿</div>
+      <div class="treatment-name">Laser Hair Removal</div>
+      <div class="treatment-range sans">from $100 / area</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section style="padding: 64px 40px; background: var(--cream);" id="team">
+  <div class="section-header">
+    <p class="section-eyebrow">The Luminara Team</p>
+    <h2 class="section-title">Expertise You Can Trust</h2>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto;">
+    <div style="background: var(--white); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--shadow-sm);">
+      <div style="font-size: 2rem; margin-bottom: 14px;">🩺</div>
+      <h3 style="font-size: 1.1rem; font-weight: 400; margin-bottom: 4px;">Dr. Sarah Chen, MD</h3>
+      <p style="font-family: Jost, sans-serif; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rose); margin-bottom: 12px;">Medical Director</p>
+      <p style="font-family: Jost, sans-serif; font-size: .82rem; color: var(--mid); line-height: 1.6;">Board-certified physician, 12+ years in aesthetic medicine. Johns Hopkins trained. Specializes in full-face rejuvenation and PDO thread lifts.</p>
+    </div>
+    <div style="background: var(--white); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--shadow-sm);">
+      <div style="font-size: 2rem; margin-bottom: 14px;">💉</div>
+      <h3 style="font-size: 1.1rem; font-weight: 400; margin-bottom: 4px;">Jennifer Walsh, RN</h3>
+      <p style="font-family: Jost, sans-serif; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rose); margin-bottom: 12px;">Aesthetic Nurse Injector</p>
+      <p style="font-family: Jost, sans-serif; font-size: .82rem; color: var(--mid); line-height: 1.6;">8 years of aesthetic nursing. Known for her gentle technique and ability to create natural, harmonious results in first-time clients.</p>
+    </div>
+    <div style="background: var(--white); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--shadow-sm);">
+      <div style="font-size: 2rem; margin-bottom: 14px;">✨</div>
+      <h3 style="font-size: 1.1rem; font-weight: 400; margin-bottom: 4px;">Michelle Torres</h3>
+      <p style="font-family: Jost, sans-serif; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rose); margin-bottom: 12px;">Licensed Medical Aesthetician</p>
+      <p style="font-family: Jost, sans-serif; font-size: .82rem; color: var(--mid); line-height: 1.6;">10 years in medical aesthetics. Certified in HydraFacial, chemical peels, IPL, and laser hair removal. Your go-to for skin health.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT BAR -->
+<section style="background: var(--charcoal); padding: 48px 40px; text-align: center;" id="contact">
+  <p style="font-size: 1.6rem; color: white; font-weight: 300; margin-bottom: 8px;">Ready to take the first step?</p>
+  <p style="font-family: Jost, sans-serif; font-size: .85rem; color: rgba(255,255,255,.6); margin-bottom: 28px;">Consultations are always free and no-pressure.</p>
+  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+    <a href="#" onclick="openChat()" class="btn-primary">Chat with Luna Now</a>
+    <a href="tel:5408994200" style="font-family: Jost, sans-serif; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.25); padding: 14px 28px; border-radius: 30px; text-decoration: none; transition: all .2s;" onmouseover="this.style.borderColor='var(--rose)';this.style.color='var(--rose)'" onmouseout="this.style.borderColor='rgba(255,255,255,.25)';this.style.color='rgba(255,255,255,.7)'">(540) 899-4200</a>
+  </div>
+  <p style="font-family: Jost, sans-serif; font-size: .75rem; color: rgba(255,255,255,.4); margin-top: 32px;">1240 Central Park Blvd, Suite 110 · Fredericksburg, VA 22401 · hello@luminaramedspa.com</p>
+</section>
+
+<!-- CHAT BUTTON -->
+<button id="chat-btn" onclick="toggleChat()">
+  💬
+  <span class="notif-dot"></span>
+</button>
+
+<!-- CHAT WINDOW -->
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">🌙</div>
+    <div class="chat-header-info">
+      <h3>Luna</h3>
+      <div class="chat-header-status">
+        <span class="status-dot"></span>
+        <p class="sans">AI Wellness Consultant · Luminara</p>
+      </div>
+    </div>
+    <button id="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div id="chat-input-row">
+    <textarea id="chat-input" placeholder="Ask about treatments, pricing, candidacy…" rows="1"></textarea>
+    <button id="chat-send" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

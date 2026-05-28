@@ -1,0 +1,112 @@
+[
+  {
+    "id": "botox",
+    "name": "Botox / Dysport",
+    "category": "Neuromodulators",
+    "concerns_addressed": ["forehead lines", "crow's feet", "frown lines", "11 lines", "brow lift", "lip flip", "jaw slimming", "excessive sweating"],
+    "description": "Botox and Dysport are FDA-approved neuromodulators that relax the muscles responsible for expression lines. Results are natural-looking — you'll look refreshed, not frozen. Treatment takes about 15 minutes with no downtime. Results appear in 3-7 days and last 3-4 months.",
+    "price_range": "$12–$15 per unit. Most areas require 20–50 units. A typical full-face visit runs $300–$600.",
+    "sessions_needed": "One session, repeated every 3-4 months to maintain results.",
+    "downtime": "None. Minor redness or pinpoint bruising may occur. You can return to normal activities immediately.",
+    "candidacy_notes": "Not suitable during pregnancy or nursing. Avoid if on blood thinners or have a neuromuscular disorder. Results vary by individual muscle strength."
+  },
+  {
+    "id": "fillers",
+    "name": "Dermal Fillers (Juvederm / Restylane)",
+    "category": "Injectables",
+    "concerns_addressed": ["lip volume", "lip definition", "cheek volume", "nasolabial folds", "marionette lines", "under-eye hollows", "jawline definition", "facial volume loss", "sunken cheeks"],
+    "description": "Hyaluronic acid fillers restore lost volume, define contours, and smooth deep folds. We use Juvederm and Restylane product lines — each formulated for a specific area of the face. Results are immediate and last 9–18 months depending on product and area treated.",
+    "price_range": "$650–$900 per syringe. Most areas require 1–2 syringes per visit.",
+    "sessions_needed": "One session. Touch-ups at 6-12 months are common to maintain optimal results.",
+    "downtime": "Mild swelling and bruising for 3-5 days, especially in the lip area. Plan around big events.",
+    "candidacy_notes": "Not suitable during pregnancy or nursing. Avoid blood thinners and alcohol 24 hours before treatment. Disclose any prior filler treatments and known allergies."
+  },
+  {
+    "id": "kybella",
+    "name": "Kybella",
+    "category": "Injectables",
+    "concerns_addressed": ["double chin", "submental fat", "neck fat", "chin definition"],
+    "description": "Kybella is the only FDA-approved injectable that permanently destroys fat cells under the chin. Deoxycholic acid breaks down fat — and those cells never return. Most clients need 2–4 sessions spaced 6 weeks apart. The result is a permanently defined jawline without surgery.",
+    "price_range": "$800–$1,200 per treatment session.",
+    "sessions_needed": "2–4 sessions, 6 weeks apart. Results are permanent after the full series.",
+    "downtime": "Significant swelling under the chin for 5-10 days after each session. Plan accordingly.",
+    "candidacy_notes": "Not suitable during pregnancy or nursing. Not a treatment for sagging skin — best for isolated submental fat. A consultation is required to assess anatomy and candidacy."
+  },
+  {
+    "id": "morpheus8",
+    "name": "Morpheus8 (RF Microneedling)",
+    "category": "Skin Resurfacing",
+    "concerns_addressed": ["loose skin", "skin laxity", "acne scars", "large pores", "fine lines", "skin texture", "jowls", "neck tightening", "stretch marks", "body contouring"],
+    "description": "Morpheus8 combines microneedling with radiofrequency energy to remodel collagen deep in the skin. It tightens, smooths, and resurfaces from the inside out. One of the most powerful non-surgical skin tightening treatments available. Works on the face, neck, and body.",
+    "price_range": "$1,200–$1,500 per session. Package pricing available for series of 3.",
+    "sessions_needed": "3 sessions, 4-6 weeks apart, for optimal results. Improvements continue for 3-6 months after the final session.",
+    "downtime": "3-5 days of redness and mild swelling. Tiny pinpoint marks resolve within days. Sunscreen required post-treatment.",
+    "candidacy_notes": "Not suitable for active skin infections or open wounds. Not recommended with metal implants near the treatment area or if you have a pacemaker. Best results on mild to moderate skin laxity. Darker skin tones require lower energy settings — disclose your skin tone during consultation."
+  },
+  {
+    "id": "chemical_peel",
+    "name": "Chemical Peels",
+    "category": "Skin Resurfacing",
+    "concerns_addressed": ["dark spots", "hyperpigmentation", "sun damage", "uneven skin tone", "dull skin", "acne", "mild acne scars", "fine lines", "rough texture"],
+    "description": "Chemical peels use medical-grade acids to exfoliate and renew the skin's surface. We offer light, medium, and deep peels depending on your concerns and tolerance. Light peels have minimal downtime and are great for maintenance. Medium peels deliver more dramatic results for sun damage and pigmentation.",
+    "price_range": "$150–$350 per session depending on peel depth.",
+    "sessions_needed": "A series of 3-6 light peels spaced 2-4 weeks apart is ideal for most clients. Single medium peels can be done once every 3-6 months.",
+    "downtime": "Light peel: 1-3 days of flaking. Medium peel: 5-7 days of peeling and redness.",
+    "candidacy_notes": "Not suitable during pregnancy. Must have been off isotretinoin (Accutane) for at least 6 months. Avoid if currently using Retin-A or retinoids — stop 5 days before treatment. Active cold sores are a contraindication."
+  },
+  {
+    "id": "laser_hair",
+    "name": "Laser Hair Removal",
+    "category": "Laser Treatments",
+    "concerns_addressed": ["unwanted hair", "body hair", "facial hair", "bikini line", "underarms", "legs", "back hair", "ingrown hairs"],
+    "description": "Our laser permanently reduces unwanted hair on the face and body. The laser targets pigment in the hair follicle, disabling future growth. Multiple sessions are needed because hair grows in cycles. Results are long-lasting — most clients achieve 80-90% permanent reduction.",
+    "price_range": "$100–$400 per session depending on treatment area. Package pricing available.",
+    "sessions_needed": "6–8 sessions, 4-6 weeks apart for face and body. Hormonal areas (chin, upper lip) may need occasional maintenance.",
+    "downtime": "None. Mild redness for a few hours post-treatment.",
+    "candidacy_notes": "Best results on light skin with dark hair. Recent sun exposure, self-tanner, or darker skin tones require adjusted settings — always disclose before treatment. Not suitable during pregnancy. Avoid laser if on photosensitizing medications."
+  },
+  {
+    "id": "ipl",
+    "name": "IPL Photofacial",
+    "category": "Laser Treatments",
+    "concerns_addressed": ["sun damage", "age spots", "brown spots", "redness", "rosacea", "broken capillaries", "uneven skin tone", "dull complexion"],
+    "description": "Intense Pulsed Light (IPL) targets pigment and vascular irregularities — brown spots, sun damage, and redness — without disrupting the skin surface. Often called a 'photofacial.' Clients love it because there's minimal downtime and results are gradual and natural-looking.",
+    "price_range": "$350–$500 per session.",
+    "sessions_needed": "3–5 sessions, 3-4 weeks apart, for significant results.",
+    "downtime": "Minimal. Brown spots temporarily darken and flake off over 7-10 days (normal and expected). Avoid sun exposure post-treatment.",
+    "candidacy_notes": "Not suitable for very dark skin tones (Fitzpatrick V-VI). Avoid recent sun exposure or self-tanner before treatment. Not suitable during pregnancy. Disclose any photosensitizing medications."
+  },
+  {
+    "id": "hydrafacial",
+    "name": "HydraFacial",
+    "category": "Facials & Skin Care",
+    "concerns_addressed": ["clogged pores", "dry skin", "dull skin", "dehydration", "blackheads", "oily skin", "fine lines", "general skin health", "acne-prone skin"],
+    "description": "HydraFacial is a medical-grade resurfacing treatment that deeply cleanses, extracts, and hydrates the skin in one 45-minute session. It uses a patented vortex-fusion technology to deliver antioxidants, peptides, and hyaluronic acid. Immediately glowing results with zero downtime — our most popular maintenance treatment.",
+    "price_range": "$200–$300 per session. Monthly memberships available.",
+    "sessions_needed": "Monthly maintenance is ideal. Single sessions are great for special event prep.",
+    "downtime": "None. Skin looks immediately refreshed and glowing.",
+    "candidacy_notes": "Suitable for all skin types and tones. Safe during pregnancy for most serums (confirm at consultation). A great starting treatment for anyone new to medical aesthetics."
+  },
+  {
+    "id": "sculptra",
+    "name": "Sculptra",
+    "category": "Injectables",
+    "concerns_addressed": ["volume loss", "facial hollowing", "temple hollowing", "cheek volume", "skin laxity", "collagen loss", "overall facial aging"],
+    "description": "Sculptra is a collagen stimulator — not a traditional filler. It works gradually, stimulating your own collagen production over several months. The result is a natural, full-face volumizing effect that can last 2 years or more. Ideal for clients who want subtle, long-lasting rejuvenation rather than immediate dramatic change.",
+    "price_range": "$800–$1,000 per vial. Most clients need 2–4 vials across 2-3 sessions.",
+    "sessions_needed": "2–3 sessions, 4-6 weeks apart. Results appear gradually over 3-6 months and last up to 2 years.",
+    "downtime": "Minimal. Mild swelling and possible bruising for a few days. You'll need to massage the area 5x daily for 5 days.",
+    "candidacy_notes": "Not suitable during pregnancy or nursing. Not ideal for clients looking for immediate results. Best for clients with moderate to significant volume loss. Disclose all prior filler or biostimulator treatments."
+  },
+  {
+    "id": "pdo_threads",
+    "name": "PDO Thread Lift",
+    "category": "Non-Surgical Lifting",
+    "concerns_addressed": ["sagging skin", "jowls", "loose neck skin", "brow drooping", "mid-face sagging", "nasolabial folds", "marionette lines"],
+    "description": "PDO thread lifts use dissolvable sutures to physically lift and reposition sagging tissue while stimulating collagen. Results are visible immediately and continue to improve as collagen builds. A true non-surgical alternative to a facelift for the right candidate. Results last 12-18 months.",
+    "price_range": "$1,500–$3,000 depending on the number of threads and areas treated.",
+    "sessions_needed": "Single session. Touch-up threads can be placed at 12-18 months.",
+    "downtime": "5-7 days of swelling, bruising, and mild discomfort. Avoid strenuous activity for 2 weeks.",
+    "candidacy_notes": "Best for clients with mild to moderate skin laxity — not a replacement for surgical facelift in advanced sagging. Disclose any blood-thinning medications. A detailed consultation is required to assess anatomy and tissue quality."
+  }
+]

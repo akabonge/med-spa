@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminara — Provider Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<div class="dash-layout">
+  <!-- DASH NAV -->
+  <nav class="dash-nav">
+    <h1>Luminara &nbsp;·&nbsp; <span style="color: var(--rose); font-style: italic;">Provider Dashboard</span></h1>
+    <div class="dash-nav-right">
+      <a href="/">← Back to Site</a>
+      <button class="refresh-btn" onclick="loadLeads()">Refresh</button>
+    </div>
+  </nav>
+
+  <div class="dash-body">
+    <!-- STATS -->
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card">
+        <div class="stat-label sans">Total Inquiries</div>
+        <div class="stat-value" id="stat-total">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label sans">Hot Leads (8+)</div>
+        <div class="stat-value rose" id="stat-hot">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label sans">Consults Booked</div>
+        <div class="stat-value" id="stat-booked">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label sans">Converted</div>
+        <div class="stat-value" id="stat-converted">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label sans">Est. Pipeline Value</div>
+        <div class="stat-value rose" id="stat-value">—</div>
+      </div>
+    </div>
+
+    <!-- KANBAN -->
+    <div class="kanban">
+      <div class="kanban-col">
+        <div class="kanban-col-header">
+          <h2 class="sans">New Inquiries</h2>
+          <span class="col-count" id="count-new">0</span>
+        </div>
+        <div class="kanban-cards" id="col-new"></div>
+      </div>
+      <div class="kanban-col">
+        <div class="kanban-col-header">
+          <h2 class="sans">Consult Booked</h2>
+          <span class="col-count" id="count-booked">0</span>
+        </div>
+        <div class="kanban-cards" id="col-consult_booked"></div>
+      </div>
+      <div class="kanban-col">
+        <div class="kanban-col-header">
+          <h2 class="sans">Converted</h2>
+          <span class="col-count" id="count-converted">0</span>
+        </div>
+        <div class="kanban-cards" id="col-converted"></div>
+      </div>
+    </div>
+
+    <!-- SCORE LEGEND -->
+    <div class="legend">
+      <span class="legend-label sans">Score legend:</span>
+      <div class="legend-items">
+        <div class="legend-item">
+          <span class="score-badge score-hot">8–10</span>
+          <span class="sans" style="font-size:.78rem; color: var(--mid);">Hot — ready to book</span>
+        </div>
+        <div class="legend-item">
+          <span class="score-badge score-warm">5–7</span>
+          <span class="sans" style="font-size:.78rem; color: var(--mid);">Warm — high interest</span>
+        </div>
+        <div class="legend-item">
+          <span class="score-badge score-early">1–4</span>
+          <span class="sans" style="font-size:.78rem; color: var(--mid);">Early — exploring</span>
+        </div>
+      </div>
+      <span class="sans" style="font-size:.72rem; color: var(--mid); margin-left: auto;" id="last-refresh"></span>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL MODAL -->
+<div class="modal-overlay" id="email-modal">
+  <div class="modal">
+    <h3>Draft Follow-Up Email</h3>
+    <textarea id="email-body" readonly></textarea>
+    <div class="modal-actions">
+      <button class="action-btn" onclick="closeModal()">Close</button>
+      <button class="action-btn primary" id="open-mailto">Open in Mail App</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = '';
+let _currentMailto = '';
+
+async function loadLeads() {
+  const res = await fetch(`${API}/api/leads`);
+  const data = await res.json();
+  renderStats(data.leads);
+  renderKanban(data.leads);
+  document.getElementById('last-refresh').textContent =
+    'Last refreshed: ' + new Date().toLocaleTimeString();
+}
+
+function scoreTier(s) {
+  if (s >= 8) return 'hot';
+  if (s >= 5) return 'warm';
+  return 'early';
+}
+
+function scoreLabel(s) {
+  if (s >= 8) return 'score-hot';
+  if (s >= 5) return 'score-warm';
+  return 'score-early';
+}
+
+function estimateValue(lead) {
+  const prices = {
+    'botox': 450, 'dysport': 450,
+    'filler': 750, 'fillers': 750, 'juvederm': 750, 'restylane': 750,
+    'morpheus8': 1350, 'rf microneedling': 1350,
+    'kybella': 1000,
+    'sculptra': 900,
+    'pdo': 2000, 'thread': 2000,
+    'ipl': 425,
+    'chemical peel': 250, 'peel': 250,
+    'hydrafacial': 250,
+    'laser hair': 250,
+  };
+  let total = 0;
+  const t = (lead.treatments_interested || []).join(' ').toLowerCase();
+  for (const [k, v] of Object.entries(prices)) {
+    if (t.includes(k)) { total += v; break; }
+  }
+  return total || 300;
+}
+
+function renderStats(leads) {
+  const hot = leads.filter(l => l.score >= 8).length;
+  const booked = leads.filter(l => l.status === 'consult_booked').length;
+  const converted = leads.filter(l => l.status === 'converted').length;
+  const pipeline = leads.reduce((acc, l) => acc + estimateValue(l), 0);
+
+  document.getElementById('stat-total').textContent = leads.length;
+  document.getElementById('stat-hot').textContent = hot;
+  document.getElementById('stat-booked').textContent = booked;
+  document.getElementById('stat-converted').textContent = converted;
+  document.getElementById('stat-value').textContent =
+    '$' + pipeline.toLocaleString();
+}
+
+function renderKanban(leads) {
+  const cols = { new: [], consult_booked: [], converted: [] };
+  leads.forEach(l => {
+    const key = l.status || 'new';
+    if (cols[key]) cols[key].push(l); else cols['new'].push(l);
+  });
+
+  for (const [key, items] of Object.entries(cols)) {
+    const colEl = document.getElementById(`col-${key}`);
+    const countEl = document.getElementById(`count-${key === 'consult_booked' ? 'booked' : key}`);
+    colEl.innerHTML = '';
+    countEl.textContent = items.length;
+
+    if (items.length === 0) {
+      colEl.innerHTML = '<div class="empty-state"><p>No leads here yet.</p></div>';
+      continue;
+    }
+
+    items.forEach(lead => {
+      colEl.appendChild(buildCard(lead));
+    });
+  }
+}
+
+function buildCard(lead) {
+  const card = document.createElement('div');
+  card.className = 'lead-card';
+
+  const tier = scoreTier(lead.score);
+  const scoreClass = scoreLabel(lead.score);
+  const name = lead.name || 'Anonymous';
+  const email = lead.email || 'No email captured';
+  const tags = (lead.treatments_interested || []).slice(0, 3);
+  const summary = lead.conversation_summary || 'Inquired about treatments.';
+  const captured = lead.captured_at
+    ? new Date(lead.captured_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    : '';
+
+  card.innerHTML = `
+    <div class="lead-card-top">
+      <div>
+        <div class="lead-name">${name}</div>
+        <div class="lead-email sans">${email}</div>
+      </div>
+      <span class="score-badge ${scoreClass}">${lead.score}/10</span>
+    </div>
+    ${tags.length ? `<div class="lead-tags">${tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` : ''}
+    <p class="lead-summary sans">${summary}</p>
+    <div class="lead-actions">
+      <button class="action-btn primary" onclick="draftEmail('${lead.session_id}')">Draft Email</button>
+      <select class="status-select sans" onchange="updateStatus('${lead.session_id}', this.value)">
+        <option value="new" ${lead.status === 'new' ? 'selected' : ''}>New</option>
+        <option value="consult_booked" ${lead.status === 'consult_booked' ? 'selected' : ''}>Consult Booked</option>
+        <option value="converted" ${lead.status === 'converted' ? 'selected' : ''}>Converted</option>
+      </select>
+      ${captured ? `<span class="sans" style="font-size:.7rem;color:var(--mid);margin-left:auto;align-self:center;">${captured}</span>` : ''}
+    </div>
+  `;
+  return card;
+}
+
+async function updateStatus(sessionId, status) {
+  await fetch(`${API}/api/leads/${sessionId}/status`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status }),
+  });
+  await loadLeads();
+}
+
+async function draftEmail(sessionId) {
+  const res = await fetch(`${API}/api/leads/${sessionId}/follow-up`);
+  const data = await res.json();
+  document.getElementById('email-body').value = data.email_body;
+  _currentMailto = data.mailto;
+  document.getElementById('open-mailto').onclick = () => window.location.href = _currentMailto;
+  document.getElementById('email-modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('email-modal').classList.remove('open');
+}
+
+document.getElementById('email-modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+
+// Auto-refresh every 30s
+loadLeads();
+setInterval(loadLeads, 30000);
+</script>
+</body>
+</html>
