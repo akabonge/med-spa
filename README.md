@@ -32,6 +32,76 @@ A full-stack AI assistant built for a fictional med spa — **Luminara Med Spa**
 
 ---
 
+## System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Browser["Browser (Client)"]
+        SITE["Website\nindex.html + app.js\nLuna chat widget"]
+        DASH["Provider Dashboard\ndashboard.html\nKanban + Stats"]
+    end
+
+    subgraph Server["FastAPI Server — port 8100"]
+        MAIN["main.py\nStatic file serving\n+ CORS middleware"]
+        ROUTER["router.py\nAPI endpoints"]
+    end
+
+    subgraph RAG["RAG Pipeline"]
+        direction TB
+        EMBED["embedder.py\nsentence-transformers\nall-MiniLM-L6-v2 (local)"]
+        CHROMA[("ChromaDB\nchroma_store/\npersistent vector DB")]
+        PIPE["pipeline.py\nSystem prompt + context\n→ Luna personality"]
+    end
+
+    subgraph LLM["LLM Layer (dual)"]
+        CLAUDE["☁ Claude Haiku\n(Anthropic API)"]
+        OLLAMA["⬡ Ollama llama3.2\n(local fallback)"]
+    end
+
+    subgraph BG["Background Task (non-blocking)"]
+        EXTRACT["lead_extractor.py\nAI extracts name, email,\nconcerns, treatments,\nscores lead 1–10"]
+    end
+
+    subgraph Storage["Storage"]
+        LEADS[("leads.json\nLead store\nthread-safe")]
+        DATA["data/\ntreatments.json\nfaqs.json\nproviders.json\npackages.json"]
+    end
+
+    INGEST["scripts/ingest_data.py\n(run once)"]
+
+    %% Client → Server
+    SITE -->|"POST /api/chat\nPOST /api/leads/contact"| ROUTER
+    DASH -->|"GET /api/leads\nPATCH status\nGET follow-up email"| ROUTER
+
+    %% Server internals
+    MAIN --> ROUTER
+
+    %% Chat flow
+    ROUTER --> PIPE
+    PIPE --> EMBED
+    EMBED -->|"query embedding"| CHROMA
+    CHROMA -->|"top 6 chunks"| PIPE
+    PIPE -->|"API key set?"| CLAUDE
+    PIPE -->|"no API key"| OLLAMA
+    CLAUDE -->|"response text"| ROUTER
+    OLLAMA -->|"response text"| ROUTER
+
+    %% Background scoring
+    ROUTER -->|"after each message"| EXTRACT
+    EXTRACT --> CLAUDE
+    EXTRACT --> LEADS
+
+    %% Lead ops
+    ROUTER --> LEADS
+
+    %% Ingestion (offline)
+    DATA --> INGEST
+    INGEST --> EMBED
+    EMBED -->|"batch embeddings"| CHROMA
+```
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
