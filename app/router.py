@@ -1,6 +1,6 @@
 import asyncio
 from datetime import datetime, timezone
-from fastapi import APIRouter, BackgroundTasks, HTTPException
+from fastapi import APIRouter, BackgroundTasks, HTTPException, Request
 from fastapi.responses import JSONResponse
 
 from app.models import ChatRequest, ChatResponse, ContactRequest, StatusUpdateRequest, LeadListResponse
@@ -17,8 +17,9 @@ _MAX_HISTORY = 12
 
 
 @router.post("/chat", response_model=ChatResponse)
-async def chat(req: ChatRequest, background_tasks: BackgroundTasks):
-    guard = check_input(req.message, req.session_id)
+async def chat(req: ChatRequest, background_tasks: BackgroundTasks, request: Request):
+    ip = request.headers.get("X-Forwarded-For", request.client.host or "").split(",")[0].strip()
+    guard = check_input(req.message, req.session_id, ip=ip)
     if not guard.allowed:
         return ChatResponse(
             response=guard.reason,

@@ -55,5 +55,9 @@ def _call_ollama(system: str, query: str, history: list[dict], settings) -> str:
     messages = [{"role": "system", "content": system}]
     messages.extend(history)
     messages.append({"role": "user", "content": query})
-    response = ollama.chat(model=settings.ollama_model, messages=messages)
+    response = ollama.chat(
+        model=settings.ollama_model,
+        messages=messages,
+        options={"num_predict": 512},
+    )
     return response["message"]["content"]
