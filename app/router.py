@@ -7,6 +7,7 @@ from app.models import ChatRequest, ChatResponse, ContactRequest, StatusUpdateRe
 from app.rag.pipeline import generate_response
 from app.rag.lead_extractor import extract_and_score
 from app.lead_store import get_lead, new_lead, upsert_lead, get_all_leads, update_lead_status
+from app.guardrails import check_input, check_output
 
 router = APIRouter()
 
@@ -17,11 +18,22 @@ _MAX_HISTORY = 12
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest, background_tasks: BackgroundTasks):
+    guard = check_input(req.message, req.session_id)
+    if not guard.allowed:
+        return ChatResponse(
+            response=guard.reason,
+            sources=[],
+            session_id=req.session_id,
+            provider="guardrail",
+            lead_captured=False,
+        )
+
     history = _sessions.get(req.session_id, [])
 
-    response_text, sources, provider = generate_response(req.message, history)
+    response_text, sources, provider = generate_response(guard.cleaned_input, history)
+    _, response_text = check_output(response_text)
 
-    history.append({"role": "user", "content": req.message})
+    history.append({"role": "user", "content": guard.cleaned_input})
     history.append({"role": "assistant", "content": response_text})
     _sessions[req.session_id] = history[-_MAX_HISTORY:]
 
