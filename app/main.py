@@ -5,8 +5,11 @@ from fastapi.responses import FileResponse
 from pathlib import Path
 
 from app.router import router
+from app.tools.mock_db import init_db
 
 app = FastAPI(title="Luminara Med Spa — Luna AI")
+
+init_db()
 
 app.add_middleware(
     CORSMiddleware,

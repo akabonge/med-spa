@@ -10,3 +10,4 @@ leads.json
 dist/
 build/
 .DS_Store
+*.db

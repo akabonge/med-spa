@@ -7,3 +7,5 @@ ollama==0.4.4
 chromadb==0.6.3
 sentence-transformers==3.3.1
 python-multipart==0.0.20
+python-dotenv>=1.0.0
+mcp>=1.0.0
