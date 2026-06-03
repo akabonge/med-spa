@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     max_history_messages: int = 12
 
     leads_file: str = str(Path(__file__).parent.parent / "leads.json")
+    admin_key: str = "demo"
 
     class Config:
         env_file = str(_ENV_FILE)

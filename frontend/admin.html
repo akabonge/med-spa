@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Suite — Luminara Med Spa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--white:#FFFFFF;--ivory:#FAFAF7;--petal:#FDF6F0;--border:#EDE8E0;--border2:#E0D8CE;--text:#2A2630;--text2:#8A8098;--sage:#4A7C6F;--sage2:#3A6A5F;--rose:#B56B7A;--rose2:#A05060;--violet:#7B5EA7;--violet2:#6A4D96;--gold:#C9A84C}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ivory);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+/* LOGIN */
+.login-overlay{position:fixed;inset:0;background:var(--ivory);display:flex;align-items:center;justify-content:center;z-index:100}
+.login-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:52px 44px;max-width:420px;width:90%;text-align:center;box-shadow:0 4px 32px rgba(42,38,48,.06)}
+.login-glyph{font-size:2rem;margin-bottom:14px;letter-spacing:.1em;color:var(--rose)}
+.login-brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--text);margin-bottom:4px;letter-spacing:.04em}
+.login-sub{font-size:.82rem;color:var(--text2);margin-bottom:36px;letter-spacing:.04em}
+.login-label{display:block;text-align:left;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:7px}
+.login-input{width:100%;padding:12px 16px;border:1px solid var(--border2);border-radius:10px;font-size:.9rem;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:var(--petal);transition:border-color .2s;margin-bottom:20px}
+.login-input:focus{border-color:var(--rose);background:var(--white)}
+.login-btn{width:100%;padding:13px;background:var(--rose);color:white;border:none;border-radius:10px;font-size:.9rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:.06em;transition:background .2s}
+.login-btn:hover{background:var(--rose2)}
+.login-err{color:var(--rose);font-size:.8rem;margin-top:12px;min-height:18px}
+/* DASH */
+.dash{display:none}
+.dash.show{display:block}
+/* HEADER */
+.hdr{background:var(--white);border-bottom:1px solid var(--border);padding:0 36px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.hdr-left{display:flex;align-items:center;gap:16px}
+.hdr-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--rose),var(--violet));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.hdr-brand{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);letter-spacing:.04em}
+.hdr-sub{font-size:.72rem;color:var(--text2);letter-spacing:.08em;text-transform:uppercase}
+.hdr-right{display:flex;align-items:center;gap:16px}
+.hdr-date{font-size:.8rem;color:var(--text2)}
+.logout{background:none;border:1px solid var(--border2);color:var(--text2);padding:6px 16px;border-radius:20px;cursor:pointer;font-size:.78rem;font-family:'Inter',sans-serif;transition:all .2s}
+.logout:hover{border-color:var(--rose);color:var(--rose)}
+/* KPI STRIP */
+.kpi-row{background:var(--petal);border-bottom:1px solid var(--border);display:flex}
+.kpi{flex:1;padding:20px 28px;border-right:1px solid var(--border);text-align:center}
+.kpi:last-child{border-right:none}
+.kpi-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:6px}
+.kpi-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--text);line-height:1}
+.kpi-num.sage{color:var(--sage)}
+.kpi-num.rose{color:var(--rose)}
+.kpi-num.violet{color:var(--violet)}
+.kpi-num.gold{color:var(--gold)}
+.kpi-sub{font-size:.72rem;color:var(--text2);margin-top:4px}
+/* FILTER BAR */
+.filter-bar{padding:14px 36px;background:var(--white);border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filter-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2)}
+select.filter{padding:7px 12px;border:1px solid var(--border2);border-radius:20px;background:var(--ivory);font-size:.8rem;color:var(--text);outline:none;cursor:pointer;font-family:'Inter',sans-serif}
+select.filter:focus{border-color:var(--rose)}
+.spacer{flex:1}
+.count-tag{font-size:.78rem;color:var(--text2)}
+/* COLUMNS */
+.columns{padding:24px 36px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+/* COLUMN */
+.col{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.col-header{padding:16px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.col-stripe{width:4px;height:32px;border-radius:2px;flex-shrink:0}
+.stripe-sage{background:var(--sage)}
+.stripe-rose{background:var(--rose)}
+.stripe-violet{background:var(--violet)}
+.col-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--text)}
+.col-title{font-size:.72rem;color:var(--text2);margin-top:1px}
+.col-count{margin-left:auto;background:var(--ivory);border:1px solid var(--border);border-radius:100px;padding:2px 10px;font-size:.72rem;color:var(--text2)}
+.col-body{padding:12px;display:flex;flex-direction:column;gap:8px;min-height:80px}
+/* APPOINTMENT CARD */
+.appt{background:var(--petal);border:1px solid var(--border);border-radius:10px;padding:13px 14px;transition:box-shadow .2s}
+.appt:hover{box-shadow:0 3px 14px rgba(42,38,48,.07)}
+.appt-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px}
+.appt-name{font-size:.88rem;font-weight:600;color:var(--text)}
+.appt-time{font-size:.72rem;color:var(--text2);font-weight:500;white-space:nowrap}
+.appt-treat{margin-bottom:6px}
+.treat-tag{display:inline-block;padding:3px 9px;border-radius:100px;font-size:.68rem;font-weight:600;letter-spacing:.03em}
+.tag-sage{background:rgba(74,124,111,.1);color:var(--sage);border:1px solid rgba(74,124,111,.2)}
+.tag-rose{background:rgba(181,107,122,.1);color:var(--rose);border:1px solid rgba(181,107,122,.2)}
+.tag-violet{background:rgba(123,94,167,.1);color:var(--violet);border:1px solid rgba(123,94,167,.2)}
+.tag-gold{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.2)}
+.appt-date{font-size:.72rem;color:var(--text2)}
+.appt-notes{font-size:.72rem;color:var(--text2);font-style:italic;margin-top:4px;line-height:1.4}
+.today-badge{background:rgba(74,124,111,.08);border-top:1px solid var(--border);padding:4px 14px;font-size:.68rem;color:var(--sage);font-weight:600;letter-spacing:.04em;text-transform:uppercase;text-align:center}
+.col-empty{padding:20px;text-align:center;font-size:.8rem;color:var(--text2);font-style:italic}
+/* LIST VIEW (mobile fallback / filter result) */
+.list-view{display:none;padding:0 36px 24px}
+.list-view.show{display:block}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-card">
+    <div class="login-glyph">✦</div>
+    <div class="login-brand">Luminara</div>
+    <div class="login-sub">Appointment Suite — Staff Access</div>
+    <label class="login-label">Access Key</label>
+    <input class="login-input" type="password" id="keyInput" placeholder="Enter key" onkeydown="if(event.key==='Enter')login()"/>
+    <button class="login-btn" onclick="login()">Enter The Suite</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dash" id="dash">
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="hdr-mark">✦</div>
+      <div>
+        <div class="hdr-brand">Luminara Med Spa</div>
+        <div class="hdr-sub">Appointment Suite</div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <div class="hdr-date" id="hdrDate"></div>
+      <button class="logout" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">Total Booked</div><div class="kpi-num rose" id="kTotal">—</div><div class="kpi-sub">all appointments</div></div>
+    <div class="kpi"><div class="kpi-label">Today</div><div class="kpi-num sage" id="kToday">—</div><div class="kpi-sub">on schedule</div></div>
+    <div class="kpi"><div class="kpi-label">Upcoming</div><div class="kpi-num violet" id="kUpcoming">—</div><div class="kpi-sub">this week &amp; beyond</div></div>
+    <div class="kpi"><div class="kpi-label">Revenue Potential</div><div class="kpi-num gold" id="kRev">—</div><div class="kpi-sub">based on starting prices</div></div>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">View:</span>
+    <select class="filter" id="fDate" onchange="render()">
+      <option value="">All Dates</option>
+      <option value="today">Today Only</option>
+      <option value="upcoming">Upcoming</option>
+    </select>
+    <select class="filter" id="fProvider" onchange="render()">
+      <option value="">All Providers</option>
+      <option value="Dr. Sarah Chen">Dr. Sarah Chen</option>
+      <option value="Jennifer Walsh, RN">Jennifer Walsh, RN</option>
+      <option value="Michelle Torres">Michelle Torres</option>
+    </select>
+    <div class="spacer"></div>
+    <span class="count-tag" id="countTag"></span>
+  </div>
+
+  <div class="columns" id="columns">
+    <div class="col" id="col0">
+      <div class="col-header"><div class="col-stripe stripe-sage"></div><div><div class="col-name">Dr. Sarah Chen</div><div class="col-title">Medical Director</div></div><span class="col-count" id="cnt0">0</span></div>
+      <div class="col-body" id="body0"></div>
+    </div>
+    <div class="col" id="col1">
+      <div class="col-header"><div class="col-stripe stripe-rose"></div><div><div class="col-name">Jennifer Walsh, RN</div><div class="col-title">Aesthetic Nurse Injector</div></div><span class="col-count" id="cnt1">0</span></div>
+      <div class="col-body" id="body1"></div>
+    </div>
+    <div class="col" id="col2">
+      <div class="col-header"><div class="col-stripe stripe-violet"></div><div><div class="col-name">Michelle Torres</div><div class="col-title">Licensed Medical Aesthetician</div></div><span class="col-count" id="cnt2">0</span></div>
+      <div class="col-body" id="body2"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let _key='',_data=[],_today='';
+const _providers=['Dr. Sarah Chen','Jennifer Walsh, RN','Michelle Torres'];
+const _provCls=['sage','rose','violet'];
+const _treatCls={
+  'Morpheus8':'tag-sage','PDO Threads':'tag-sage','Sculptra':'tag-sage','Kybella':'tag-sage',
+  'Botox':'tag-rose','Dysport':'tag-rose','Dermal Fillers':'tag-rose',
+  'HydraFacial':'tag-violet','Chemical Peels':'tag-violet','IPL Photofacial':'tag-violet','Laser Hair Removal':'tag-violet'
+};
+
+function login(){
+  const k=document.getElementById('keyInput').value.trim();
+  if(!k)return;
+  fetch('/api/admin/data?key='+encodeURIComponent(k))
+    .then(r=>r.ok?r.json():Promise.reject())
+    .then(d=>{
+      _key=k; _data=d.appointments||[]; _today=new Date().toISOString().slice(0,10);
+      document.getElementById('loginOverlay').style.display='none';
+      document.getElementById('dash').classList.add('show');
+      document.getElementById('kTotal').textContent=d.stats.total;
+      document.getElementById('kToday').textContent=d.stats.today;
+      document.getElementById('kUpcoming').textContent=d.stats.upcoming;
+      document.getElementById('kRev').textContent='$'+d.stats.revenue_potential.toLocaleString();
+      document.getElementById('hdrDate').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+      render();
+    }).catch(()=>{document.getElementById('loginErr').textContent='Invalid key. Please try again.';});
+}
+
+function logout(){_key='';_data=[];document.getElementById('loginOverlay').style.display='flex';document.getElementById('dash').classList.remove('show');}
+
+function render(){
+  const fd=document.getElementById('fDate').value;
+  const fp=document.getElementById('fProvider').value;
+
+  const filtered=_data.filter(a=>{
+    if(fd==='today'&&a.date!==_today)return false;
+    if(fd==='upcoming'&&a.date<_today)return false;
+    if(fp&&a.provider!==fp)return false;
+    return true;
+  });
+
+  document.getElementById('countTag').textContent=filtered.length+' appointment'+(filtered.length!==1?'s':'');
+
+  _providers.forEach((p,i)=>{
+    const appts=filtered.filter(a=>a.provider===p);
+    document.getElementById('cnt'+i).textContent=appts.length;
+    const body=document.getElementById('body'+i);
+    if(!appts.length){body.innerHTML='<div class="col-empty">No appointments</div>';return;}
+    body.innerHTML=appts.map(a=>{
+      const isToday=a.date===_today;
+      const tagCls=_treatCls[a.treatment]||'tag-gold';
+      return `<div class="appt">
+        <div class="appt-top">
+          <span class="appt-name">${a.name||'—'}</span>
+          <span class="appt-time">${a.time||''}</span>
+        </div>
+        <div class="appt-treat"><span class="treat-tag ${tagCls}">${a.treatment||'—'}</span></div>
+        <div class="appt-date">${a.date||'—'}</div>
+        ${a.notes?`<div class="appt-notes">${a.notes}</div>`:''}
+        ${isToday?'<div class="today-badge">Today</div>':''}
+      </div>`;
+    }).join('');
+  });
+}
+
+document.getElementById('keyInput').addEventListener('keydown',e=>{if(e.key==='Enter')login();});
+</script>
+</body>
+</html>
